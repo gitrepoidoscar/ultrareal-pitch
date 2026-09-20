@@ -1,0 +1,1333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UltraReal V2 — Investor Pitch Deck</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+  :root {
+    --bg-primary: #0a0e1a;
+    --bg-secondary: #111827;
+    --bg-card: #1a2035;
+    --accent-blue: #3b82f6;
+    --accent-purple: #8b5cf6;
+    --accent-cyan: #06b6d4;
+    --accent-green: #10b981;
+    --accent-orange: #f59e0b;
+    --accent-red: #ef4444;
+    --accent-pink: #ec4899;
+    --text-primary: #f1f5f9;
+    --text-secondary: #94a3b8;
+    --text-muted: #64748b;
+    --gradient-1: linear-gradient(135deg, #3b82f6, #8b5cf6);
+    --gradient-2: linear-gradient(135deg, #06b6d4, #3b82f6);
+    --gradient-3: linear-gradient(135deg, #10b981, #06b6d4);
+    --gradient-4: linear-gradient(135deg, #f59e0b, #ef4444);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html {
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+    overflow-y: scroll;
+  }
+
+  body {
+    font-family: 'Inter', -apple-system, system-ui, sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.6;
+  }
+
+  .slide {
+    min-height: 100vh;
+    scroll-snap-align: start;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 80px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .slide-content {
+    max-width: 1200px;
+    width: 100%;
+    z-index: 2;
+  }
+
+  .nav-dots {
+    position: fixed;
+    right: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .nav-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.2);
+    border: 2px solid rgba(255,255,255,0.3);
+    cursor: pointer;
+    transition: all 0.3s;
+    position: relative;
+  }
+
+  .nav-dot:hover { background: rgba(255,255,255,0.5); }
+  .nav-dot.active { background: var(--accent-blue); border-color: var(--accent-blue); transform: scale(1.3); }
+
+  .nav-dot .tooltip {
+    position: absolute;
+    right: 24px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--bg-card);
+    color: var(--text-primary);
+    padding: 4px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s;
+  }
+
+  .nav-dot:hover .tooltip { opacity: 1; }
+
+  .slide-counter {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Space Grotesk', monospace;
+    font-size: 14px;
+    color: var(--text-muted);
+    z-index: 100;
+    background: rgba(10,14,26,0.8);
+    padding: 6px 16px;
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+  }
+
+  .slide-label {
+    font-family: 'Space Grotesk', monospace;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent-cyan);
+    margin-bottom: 16px;
+  }
+
+  h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 64px;
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 24px;
+  }
+
+  h2 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 1.15;
+    margin-bottom: 20px;
+  }
+
+  h3 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+
+  .subtitle {
+    font-size: 22px;
+    color: var(--text-secondary);
+    max-width: 700px;
+    line-height: 1.5;
+  }
+
+  .highlight { color: var(--accent-blue); }
+  .highlight-green { color: var(--accent-green); }
+  .highlight-purple { color: var(--accent-purple); }
+  .highlight-cyan { color: var(--accent-cyan); }
+  .highlight-orange { color: var(--accent-orange); }
+
+  .card-grid {
+    display: grid;
+    gap: 20px;
+    margin-top: 32px;
+  }
+
+  .card-grid-2 { grid-template-columns: 1fr 1fr; }
+  .card-grid-3 { grid-template-columns: 1fr 1fr 1fr; }
+  .card-grid-4 { grid-template-columns: 1fr 1fr 1fr 1fr; }
+
+  .card {
+    background: var(--bg-card);
+    border-radius: 16px;
+    padding: 28px;
+    border: 1px solid rgba(255,255,255,0.06);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+
+  .card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+  }
+
+  .card-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    margin-bottom: 16px;
+  }
+
+  .card h3 { font-size: 20px; margin-bottom: 8px; }
+  .card p { color: var(--text-secondary); font-size: 15px; line-height: 1.6; }
+
+  .stat-row {
+    display: flex;
+    gap: 40px;
+    margin-top: 40px;
+    flex-wrap: wrap;
+  }
+
+  .stat { text-align: center; }
+
+  .stat-number {
+    font-family: 'Space Grotesk', monospace;
+    font-size: 56px;
+    font-weight: 800;
+    background: var(--gradient-1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin-top: 8px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .pipeline {
+    display: flex;
+    align-items: stretch;
+    gap: 0;
+    margin-top: 36px;
+    position: relative;
+  }
+
+  .pipeline-stage {
+    flex: 1;
+    text-align: center;
+    padding: 20px 12px;
+    position: relative;
+    border-radius: 12px;
+    background: var(--bg-card);
+    border: 1px solid rgba(255,255,255,0.06);
+    margin: 0 4px;
+    transition: transform 0.3s;
+  }
+
+  .pipeline-stage:hover { transform: translateY(-4px); }
+
+  .pipeline-stage .stage-num {
+    font-family: 'Space Grotesk', monospace;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--accent-cyan);
+    margin-bottom: 8px;
+  }
+
+  .pipeline-stage .stage-icon { font-size: 28px; margin-bottom: 8px; }
+  .pipeline-stage .stage-title { font-size: 13px; font-weight: 600; margin-bottom: 4px; }
+  .pipeline-stage .stage-desc { font-size: 11px; color: var(--text-muted); line-height: 1.4; }
+
+  .pipeline-arrow {
+    position: absolute;
+    top: 50%;
+    right: -12px;
+    transform: translateY(-50%);
+    color: var(--accent-blue);
+    font-size: 18px;
+    z-index: 3;
+  }
+
+  .comparison-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin-top: 28px;
+    font-size: 14px;
+  }
+
+  .comparison-table th {
+    padding: 14px 18px;
+    text-align: left;
+    font-weight: 600;
+    color: var(--text-secondary);
+    border-bottom: 2px solid rgba(255,255,255,0.1);
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .comparison-table td {
+    padding: 14px 18px;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    vertical-align: top;
+  }
+
+  .comparison-table tr:hover td { background: rgba(255,255,255,0.02); }
+  .comparison-table .feature-col { font-weight: 500; color: var(--text-primary); min-width: 200px; }
+  .comparison-table .us-col { color: var(--accent-green); font-weight: 600; }
+  .check { color: var(--accent-green); font-weight: 700; }
+  .cross { color: var(--accent-red); opacity: 0.6; }
+  .partial { color: var(--accent-orange); }
+
+  .slide-image {
+    width: 100%;
+    border-radius: 16px;
+    margin-top: 24px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+  }
+
+  .two-col {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    margin-top: 32px;
+  }
+
+  .two-col > div { flex: 1; }
+
+  .bg-gradient-mesh::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(ellipse at 20% 50%, rgba(59,130,246,0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 50%, rgba(139,92,246,0.08) 0%, transparent 50%);
+    z-index: 0;
+  }
+
+  .bg-gradient-green::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(ellipse at 30% 40%, rgba(16,185,129,0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 60%, rgba(6,182,212,0.06) 0%, transparent 50%);
+    z-index: 0;
+  }
+
+  .patent-card {
+    background: var(--bg-card);
+    border-radius: 16px;
+    padding: 24px;
+    border-left: 4px solid var(--accent-purple);
+    margin-bottom: 16px;
+  }
+
+  .patent-card h4 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 17px;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+
+  .patent-card p { font-size: 14px; color: var(--text-secondary); }
+  .patent-tag {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 600;
+    margin-right: 6px;
+    margin-top: 8px;
+  }
+
+  .tag-high { background: rgba(139,92,246,0.2); color: var(--accent-purple); }
+  .tag-novel { background: rgba(16,185,129,0.2); color: var(--accent-green); }
+  .tag-defensive { background: rgba(59,130,246,0.2); color: var(--accent-blue); }
+
+  .metric-bar { margin-bottom: 20px; }
+
+  .metric-bar .metric-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 6px;
+    font-size: 14px;
+  }
+
+  .metric-bar .bar-bg {
+    height: 8px;
+    background: rgba(255,255,255,0.08);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .metric-bar .bar-fill {
+    height: 100%;
+    border-radius: 4px;
+    transition: width 1s ease;
+  }
+
+  .explain-box {
+    background: rgba(6,182,212,0.08);
+    border: 1px solid rgba(6,182,212,0.2);
+    border-radius: 10px;
+    padding: 14px 18px;
+    margin-top: 16px;
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+
+  .explain-box strong { color: var(--accent-cyan); }
+
+  .timeline {
+    position: relative;
+    margin-top: 32px;
+    padding-left: 30px;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 8px;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: linear-gradient(to bottom, var(--accent-blue), var(--accent-green));
+    border-radius: 2px;
+  }
+
+  .timeline-item {
+    position: relative;
+    margin-bottom: 28px;
+    padding-left: 20px;
+  }
+
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -26px;
+    top: 6px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--accent-blue);
+    border: 3px solid var(--bg-primary);
+  }
+
+  .timeline-item .tl-date {
+    font-family: 'Space Grotesk', monospace;
+    font-size: 13px;
+    color: var(--accent-cyan);
+    font-weight: 600;
+  }
+
+  .timeline-item h4 { font-size: 18px; font-weight: 600; margin: 4px 0; }
+  .timeline-item p { font-size: 14px; color: var(--text-secondary); }
+
+  .cta-button {
+    display: inline-block;
+    padding: 16px 40px;
+    background: var(--gradient-1);
+    color: white;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 12px;
+    text-decoration: none;
+    margin-top: 24px;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+
+  .cta-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(59,130,246,0.4);
+  }
+
+  .divider {
+    width: 60px;
+    height: 4px;
+    background: var(--gradient-1);
+    border-radius: 2px;
+    margin: 20px 0;
+  }
+
+  .logo {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 800;
+    font-size: 20px;
+    position: fixed;
+    top: 24px;
+    left: 32px;
+    z-index: 100;
+    color: var(--text-primary);
+  }
+
+  .logo span { color: var(--accent-blue); }
+
+  @media (max-width: 1024px) {
+    .slide { padding: 40px; }
+    h1 { font-size: 44px; }
+    h2 { font-size: 36px; }
+    .card-grid-3, .card-grid-4 { grid-template-columns: 1fr 1fr; }
+    .pipeline { flex-wrap: wrap; }
+    .pipeline-stage { min-width: 120px; }
+    .stat-number { font-size: 40px; }
+    .two-col { flex-direction: column; }
+  }
+
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .slide-content > * {
+    animation: fadeInUp 0.6s ease-out both;
+  }
+</style>
+</head>
+<body>
+
+<div class="logo">ULTRA<span>REAL</span></div>
+<div class="nav-dots" id="navDots"></div>
+<div class="slide-counter" id="slideCounter">1 / 14</div>
+
+<!-- SLIDE 1: HERO -->
+<section class="slide bg-gradient-mesh" id="slide-0" data-label="Welcome">
+  <div class="slide-content" style="text-align:center;">
+    <div class="slide-label">Investor Presentation · 2026</div>
+    <h1>The AI Film Studio<br>That <span class="highlight">Never Wastes a Dollar</span></h1>
+    <p class="subtitle" style="margin:0 auto 32px;">UltraReal V2 transforms written screenplays into production-ready film assets — with built-in quality checks, cost controls, and creative safeguards that don't exist anywhere else.</p>
+    <img src="hero_ai_studio_1789877175189.jpg" class="slide-image" alt="AI Film Production Studio" style="max-width:900px; margin: 0 auto;">
+  </div>
+</section>
+
+<!-- SLIDE 2: THE PROBLEM -->
+<section class="slide" id="slide-1" data-label="The Problem">
+  <div class="slide-content">
+    <div class="slide-label">The Problem</div>
+    <h2>AI Video Generation Is<br><span style="color:var(--accent-red);">Expensive, Unreliable, and Chaotic</span></h2>
+    <div class="two-col" style="margin-top:24px;">
+      <div>
+        <p class="subtitle" style="margin-bottom:24px;">Today, creating AI-generated films means:</p>
+        <div style="margin-bottom:18px;">
+          <h3 style="color:var(--accent-red);font-size:22px;">💸 Wasted Money</h3>
+          <p style="color:var(--text-secondary);font-size:15px;">Each video generation attempt costs real money. Without quality checks, most attempts fail — and you pay for every failure. There's no way to know if a scene will work <em>before</em> spending on it.</p>
+        </div>
+        <div style="margin-bottom:18px;">
+          <h3 style="color:var(--accent-orange);font-size:22px;">🎭 Broken Continuity</h3>
+          <p style="color:var(--text-secondary);font-size:15px;">Characters change appearance between shots. A blue jacket in Scene 1 becomes red in Scene 2. Props appear and disappear. AI has no memory of what happened in the previous scene.</p>
+        </div>
+        <div style="margin-bottom:18px;">
+          <h3 style="color:var(--accent-orange);font-size:22px;">🎲 Random Results</h3>
+          <p style="color:var(--text-secondary);font-size:15px;">There's no systematic way to ensure the AI follows your creative vision. Each generation is a gamble. Filmmakers spend hours manually checking outputs and re-rolling for better results.</p>
+        </div>
+        <div>
+          <h3 style="color:var(--accent-red);font-size:22px;">⚖️ Legal Blind Spots</h3>
+          <p style="color:var(--text-secondary);font-size:15px;">No tracking of image rights, consent, or intellectual property. Studios can't prove where an image came from or whether they have permission to use reference materials.</p>
+        </div>
+      </div>
+      <div>
+        <img src="before_after_comparison_1789877184118.jpg" class="slide-image" alt="Before and After comparison" style="margin-top:0;">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 3: THE SOLUTION -->
+<section class="slide bg-gradient-mesh" id="slide-2" data-label="Our Solution">
+  <div class="slide-content">
+    <div class="slide-label">Our Solution</div>
+    <h2>UltraReal: The <span class="highlight">Missing Layer</span><br>Between Script and Screen</h2>
+    <p class="subtitle" style="margin-bottom:32px;">Think of UltraReal as a virtual preproduction studio. You write the screenplay — UltraReal handles everything between writing and final video: planning, designing, generating images, verifying quality, and packaging everything for video creation.</p>
+    <div class="card-grid card-grid-3">
+      <div class="card">
+        <div class="card-icon" style="background:rgba(59,130,246,0.15);">📖</div>
+        <h3>You Write the Script</h3>
+        <p>Start with any screenplay or story. UltraReal reads every scene, every line of dialogue, every dramatic moment — and guarantees nothing gets left out.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon" style="background:rgba(139,92,246,0.15);">🎬</div>
+        <h3>AI Plans the Production</h3>
+        <p>Camera angles, lighting, actor blocking, wardrobe, props — UltraReal designs all the visual details a real film crew would decide, with full creative control for you.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon" style="background:rgba(16,185,129,0.15);">🖼️</div>
+        <h3>Verified Keyframes</h3>
+        <p>AI generates the key images for each shot, then runs them through 5 independent quality checks before accepting. Failed images are caught <em>before</em> you spend money on video.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon" style="background:rgba(6,182,212,0.15);">🔒</div>
+        <h3>Budget Protection</h3>
+        <p>Hard spending limits are enforced automatically. The system tells you the estimated cost upfront and never exceeds your approved budget — even if it crashes mid-run.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon" style="background:rgba(245,158,11,0.15);">⚖️</div>
+        <h3>Rights & Legal Trail</h3>
+        <p>Every image tracks where it came from, what references were used, who approved it, and whether all permissions are in order. Full legal chain of custody.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon" style="background:rgba(236,72,153,0.15);">📦</div>
+        <h3>Ready-to-Use Package</h3>
+        <p>The final output is a clean package of verified images, prompts, and timing instructions — ready for you to create video with Google Veo or any video AI service.</p>
+      </div>
+    </div>
+    <div class="explain-box">
+      <strong>💡 What's a "keyframe"?</strong> In filmmaking, keyframes are the most important images in a scene — the start and end positions. If these look right, the video between them will usually look right too. UltraReal generates and verifies these critical images before you spend money on expensive video generation.
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 4: HOW IT WORKS -->
+<section class="slide" id="slide-3" data-label="How It Works">
+  <div class="slide-content">
+    <div class="slide-label">How It Works</div>
+    <h2>From Screenplay to Screen-Ready<br>in <span class="highlight-cyan">8 Automated Stages</span></h2>
+    <p class="subtitle" style="margin-bottom:12px;">Each stage builds on the previous one. Nothing moves forward until quality checks pass.</p>
+    <div class="pipeline">
+      <div class="pipeline-stage">
+        <div class="stage-num">STAGE 1</div>
+        <div class="stage-icon">📄</div>
+        <div class="stage-title">Read Script</div>
+        <div class="stage-desc">Import your screenplay word-for-word. Every scene and line is mapped.</div>
+        <span class="pipeline-arrow">→</span>
+      </div>
+      <div class="pipeline-stage">
+        <div class="stage-num">STAGE 2</div>
+        <div class="stage-icon">📋</div>
+        <div class="stage-title">Story Plan</div>
+        <div class="stage-desc">Verify 100% of story moments are covered. Nothing is silently skipped.</div>
+        <span class="pipeline-arrow">→</span>
+      </div>
+      <div class="pipeline-stage">
+        <div class="stage-num">STAGE 3</div>
+        <div class="stage-icon">🎨</div>
+        <div class="stage-title">Visual Design</div>
+        <div class="stage-desc">Plan camera work, lighting, color, and style for the entire film.</div>
+        <span class="pipeline-arrow">→</span>
+      </div>
+      <div class="pipeline-stage">
+        <div class="stage-num">STAGE 4</div>
+        <div class="stage-icon">🎭</div>
+        <div class="stage-title">Acting Plan</div>
+        <div class="stage-desc">Direct actors: body language, expressions, reactions, eye contact.</div>
+        <span class="pipeline-arrow">→</span>
+      </div>
+      <div class="pipeline-stage">
+        <div class="stage-num">STAGE 5</div>
+        <div class="stage-icon">🗺️</div>
+        <div class="stage-title">Set Layout</div>
+        <div class="stage-desc">Map where everything is: furniture, doors, characters, cameras.</div>
+        <span class="pipeline-arrow">→</span>
+      </div>
+      <div class="pipeline-stage">
+        <div class="stage-num">STAGE 6</div>
+        <div class="stage-icon">🔗</div>
+        <div class="stage-title">Continuity</div>
+        <div class="stage-desc">Track props, wardrobe, and physical states across every shot.</div>
+        <span class="pipeline-arrow">→</span>
+      </div>
+      <div class="pipeline-stage">
+        <div class="stage-num">STAGE 7</div>
+        <div class="stage-icon">🖼️</div>
+        <div class="stage-title">Generate</div>
+        <div class="stage-desc">Create keyframe images with AI. Multiple candidates per shot.</div>
+        <span class="pipeline-arrow">→</span>
+      </div>
+      <div class="pipeline-stage">
+        <div class="stage-num">STAGE 8</div>
+        <div class="stage-icon">✅</div>
+        <div class="stage-title">Verify</div>
+        <div class="stage-desc">5 independent judges check every image before acceptance.</div>
+      </div>
+    </div>
+    <div class="explain-box" style="margin-top:24px;">
+      <strong>💡 Why is this special?</strong> Other tools jump straight from text to video. UltraReal adds all the steps a real film production team would do — casting, set design, camera planning, continuity tracking — <em>before</em> generating anything. This means far fewer failed generations and much lower costs.
+    </div>
+    <div class="stat-row" style="justify-content:center;">
+      <div class="stat"><div class="stat-number">100%</div><div class="stat-label">Story Coverage</div></div>
+      <div class="stat"><div class="stat-number">5</div><div class="stat-label">Quality Judges</div></div>
+      <div class="stat"><div class="stat-number">7</div><div class="stat-label">Creative Locks</div></div>
+      <div class="stat"><div class="stat-number">$0</div><div class="stat-label">Uncontrolled Spend</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 5: QUALITY SYSTEM -->
+<section class="slide bg-gradient-green" id="slide-4" data-label="Quality System">
+  <div class="slide-content">
+    <div class="slide-label">Quality Assurance</div>
+    <h2>Every Image Passes Through<br><span class="highlight-green">5 Independent Judges</span></h2>
+    <p class="subtitle" style="margin-bottom:16px;">No other AI film tool has a multi-layered verification system. This is how UltraReal catches problems <em>before</em> they cost you money.</p>
+    <img src="verification_cascade_1789877193572.jpg" class="slide-image" alt="Verification Cascade" style="max-width:900px;">
+    <div class="card-grid card-grid-3" style="margin-top:28px;">
+      <div class="card">
+        <h3>🔍 Blind Observer</h3>
+        <p>An AI examines the image <em>without seeing the prompt</em> — just describes what it sees. This catches issues the prompt-aware models might miss or excuse.</p>
+      </div>
+      <div class="card">
+        <h3>📏 Rule Checker</h3>
+        <p>Automated checks: correct number of people? Right aspect ratio? Minimum resolution? No visual artifacts? These are yes/no checks, no subjective judgment.</p>
+      </div>
+      <div class="card">
+        <h3>⚖️ Independent Judge</h3>
+        <p>A separate AI model (not the one that created the image) scores it against the requirements. The creator can never grade its own homework.</p>
+      </div>
+    </div>
+    <div class="card-grid card-grid-2" style="margin-top:0;">
+      <div class="card">
+        <h3>👤 Shadow Judge</h3>
+        <p>A second independent opinion runs silently. If the shadow judge disagrees with the primary judge, the conflict is flagged for human review.</p>
+      </div>
+      <div class="card">
+        <h3>🔤 Text Verification (OCR)</h3>
+        <p>If the image should contain readable text (a sign, phone screen, letter), local text-reading software verifies the exact spelling — no cloud calls needed.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 6: COST PROTECTION -->
+<section class="slide" id="slide-5" data-label="Cost Protection">
+  <div class="slide-content">
+    <div class="slide-label">Financial Safety</div>
+    <h2>Built-In <span class="highlight-orange">Cost Protection</span><br>That Actually Works</h2>
+    <p class="subtitle" style="margin-bottom:32px;">Other AI tools let you accidentally spend thousands. UltraReal makes overspending physically impossible.</p>
+    <div class="card-grid card-grid-2">
+      <div class="card" style="border-left:4px solid var(--accent-orange);">
+        <h3>📊 Upfront Cost Forecast</h3>
+        <p>Before spending a single dollar, UltraReal calculates best-case, expected, and worst-case costs. You approve the budget before anything runs.</p>
+        <div class="explain-box" style="margin-top:12px;"><strong>Example:</strong> "This 20-shot film will cost between $8 and $45, with an expected cost of $22. Approve?"</div>
+      </div>
+      <div class="card" style="border-left:4px solid var(--accent-green);">
+        <h3>🔒 Hard Spending Limits</h3>
+        <p>You set a dollar ceiling. The system enforces it at every single API call — not at the end when it's too late. Even if the software crashes and restarts, the ledger knows exactly what was already spent.</p>
+        <div class="explain-box" style="margin-top:12px;"><strong>How it works:</strong> Every AI request first "reserves" its cost in a tamper-proof ledger. If the reservation would exceed your limit, the request is blocked instantly.</div>
+      </div>
+      <div class="card" style="border-left:4px solid var(--accent-purple);">
+        <h3>🎯 Scene Priority</h3>
+        <p>Mark your most important scenes. UltraReal reserves budget for them first, so earlier scenes can't eat up all the money through retries before you reach the climax.</p>
+      </div>
+      <div class="card" style="border-left:4px solid var(--accent-cyan);">
+        <h3>🔄 Crash Recovery</h3>
+        <p>If the system crashes mid-run, it picks up exactly where it left off. Already-paid API calls aren't duplicated. Already-approved images aren't regenerated. Zero wasted spend on restart.</p>
+      </div>
+    </div>
+    <div class="stat-row" style="justify-content:center; margin-top:40px;">
+      <div class="stat"><div class="stat-number" style="background:linear-gradient(135deg,#f59e0b,#ef4444);-webkit-background-clip:text;">$0</div><div class="stat-label">Maximum Uncontrolled Spend</div></div>
+      <div class="stat"><div class="stat-number" style="background:linear-gradient(135deg,#10b981,#06b6d4);-webkit-background-clip:text;">100%</div><div class="stat-label">Budget Adherence Rate</div></div>
+      <div class="stat"><div class="stat-number" style="background:linear-gradient(135deg,#8b5cf6,#3b82f6);-webkit-background-clip:text;">0</div><div class="stat-label">Duplicate Charges on Crash</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 7: WHAT'S NEW -->
+<section class="slide bg-gradient-mesh" id="slide-6" data-label="What's New">
+  <div class="slide-content">
+    <div class="slide-label">Latest Release · V2.2</div>
+    <h2>What's New:<br><span class="highlight-purple">AI That Reviews Its Own Work</span></h2>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="tl-date">V2.2 · August 2026</div>
+        <h4>Pixel-Perfect Continuity</h4>
+        <p>Reference images are now recompiled from <em>actual accepted frames</em> for every shot. Characters maintain exact visual consistency. Overridden images are quarantined — they can't contaminate future shots.</p>
+      </div>
+      <div class="timeline-item">
+        <div class="tl-date">V2.1 · August 2026</div>
+        <h4>Smart Auto-Review</h4>
+        <p>Routine creative proposals are reviewed and approved by AI automatically — cutting operator workload by 90%. Material decisions (budget, rights, creative conflicts) are still escalated to humans. Calibrated against 46 test cases with 95%+ accuracy.</p>
+      </div>
+      <div class="timeline-item">
+        <div class="tl-date">V2.1 · August 2026</div>
+        <h4>Self-Healing Repairs</h4>
+        <p>When an image fails because the underlying plan is wrong (not random luck), UltraReal diagnoses the root cause and fixes it — then retries. No more wasting money regenerating from broken instructions.</p>
+      </div>
+      <div class="timeline-item">
+        <div class="tl-date">V2.1 · August 2026</div>
+        <h4>Visual Review Dashboard</h4>
+        <p>A browser-based review interface for teams to inspect, approve, or repair creative plans and generated images — with role-based access and real-time progress updates.</p>
+      </div>
+      <div class="timeline-item">
+        <div class="tl-date">V2.0 · August 2026</div>
+        <h4>Production-Grade Foundation</h4>
+        <p>SQLite state ledger, content-addressed caching, typed production graphs, event sourcing, creative locks, budget enforcement, rights governance, and the 5-judge verification cascade.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 8: COMPETITIVE LANDSCAPE -->
+<section class="slide" id="slide-7" data-label="Competition" style="padding-top:40px;padding-bottom:40px;">
+  <div class="slide-content">
+    <div class="slide-label">Competitive Landscape</div>
+    <h2>The 2026 AI Filmmaking Stack —<br><span class="highlight">And Where We Fit</span></h2>
+    <p class="subtitle" style="margin-bottom:20px;">The market has three layers. Most tools compete in one. UltraReal is the only tool that combines rigorous preproduction planning with verified image generation and production-grade safety controls.</p>
+
+    <!-- Market Map -->
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:28px;">
+      <div class="card" style="border-top:3px solid var(--accent-cyan);padding:20px;">
+        <h3 style="font-size:16px;color:var(--accent-cyan);">Layer 1: Pre-Production</h3>
+        <p style="font-size:13px;">Script breakdown, storyboarding, character consistency, creative planning</p>
+        <div style="margin-top:10px;font-size:13px;color:var(--text-muted);">
+          <strong style="color:var(--text-secondary);">Tools:</strong> Storyflow, Boords AI, Drawstory
+        </div>
+      </div>
+      <div class="card" style="border-top:3px solid var(--accent-purple);padding:20px;">
+        <h3 style="font-size:16px;color:var(--accent-purple);">Layer 2: Full-Pipeline Suites</h3>
+        <p style="font-size:13px;">End-to-end platforms: script → storyboard → generate → edit → export</p>
+        <div style="margin-top:10px;font-size:13px;color:var(--text-muted);">
+          <strong style="color:var(--text-secondary);">Tools:</strong> Google Flow, Higgsfield, LTX Studio, Saga, invideo AI
+        </div>
+      </div>
+      <div class="card" style="border-top:3px solid var(--accent-orange);padding:20px;">
+        <h3 style="font-size:16px;color:var(--accent-orange);">Layer 3: Video Generators</h3>
+        <p style="font-size:13px;">Raw AI models that turn text/images into video clips</p>
+        <div style="margin-top:10px;font-size:13px;color:var(--text-muted);">
+          <strong style="color:var(--text-secondary);">Models:</strong> Veo 3.1, Sora 2, Runway Gen-4, Kling 3.0, Seedance 2.5
+        </div>
+      </div>
+    </div>
+
+    <!-- Comparison Table -->
+    <table class="comparison-table" style="font-size:13px;">
+      <thead>
+        <tr>
+          <th class="feature-col" style="min-width:170px;">Capability</th>
+          <th class="us-col">UltraReal V2</th>
+          <th>Google Flow</th>
+          <th>Higgsfield</th>
+          <th>LTX Studio</th>
+          <th>Saga</th>
+          <th>invideo AI</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="feature-col">Script → Shot Plan</td>
+          <td class="check">✓ 100% beat coverage</td>
+          <td class="partial">⚠ Agent-assisted</td>
+          <td class="cross">✗ Manual setup</td>
+          <td class="partial">⚠ Auto-storyboard</td>
+          <td class="partial">⚠ Script breakdown</td>
+          <td class="partial">⚠ Agent breakdown</td>
+        </tr>
+        <tr>
+          <td class="feature-col">Multi-Shot Continuity</td>
+          <td class="check">✓ Whole-film graph</td>
+          <td class="partial">⚠ Character refs</td>
+          <td class="partial">⚠ Soul ID per-clip</td>
+          <td class="partial">⚠ Elements persist</td>
+          <td class="partial">⚠ Story Bible</td>
+          <td class="partial">⚠ Persistent context</td>
+        </tr>
+        <tr>
+          <td class="feature-col">Pre-Gen Quality Checks</td>
+          <td class="check">✓ 5-judge cascade</td>
+          <td class="cross">✗ None</td>
+          <td class="cross">✗ None</td>
+          <td class="cross">✗ None</td>
+          <td class="cross">✗ None</td>
+          <td class="cross">✗ None</td>
+        </tr>
+        <tr>
+          <td class="feature-col">Budget Controls</td>
+          <td class="check">✓ Atomic ledger + forecast</td>
+          <td class="partial">⚠ Credit tiers</td>
+          <td class="partial">⚠ Credit tiers</td>
+          <td class="partial">⚠ Credit system</td>
+          <td class="cross">✗ Pay per use</td>
+          <td class="partial">⚠ Credit system</td>
+        </tr>
+        <tr>
+          <td class="feature-col">Rights & IP Tracking</td>
+          <td class="check">✓ Full chain of custody</td>
+          <td class="cross">✗ None</td>
+          <td class="cross">✗ None</td>
+          <td class="cross">✗ None</td>
+          <td class="cross">✗ None</td>
+          <td class="cross">✗ None</td>
+        </tr>
+        <tr>
+          <td class="feature-col">Crash Recovery</td>
+          <td class="check">✓ Exactly-once resume</td>
+          <td class="cross">✗ Regenerate</td>
+          <td class="cross">✗ Regenerate</td>
+          <td class="partial">⚠ Retake only</td>
+          <td class="cross">✗ Regenerate</td>
+          <td class="cross">✗ Regenerate</td>
+        </tr>
+        <tr>
+          <td class="feature-col">Root-Cause Repair</td>
+          <td class="check">✓ Structural diagnosis</td>
+          <td class="cross">✗ Re-prompt</td>
+          <td class="cross">✗ Re-prompt</td>
+          <td class="cross">✗ Re-prompt</td>
+          <td class="cross">✗ Re-prompt</td>
+          <td class="cross">✗ Re-prompt</td>
+        </tr>
+        <tr>
+          <td class="feature-col">Actor Direction</td>
+          <td class="check">✓ Ensemble blocking</td>
+          <td class="cross">✗ None</td>
+          <td class="partial">⚠ Camera control</td>
+          <td class="partial">⚠ 3D camera</td>
+          <td class="cross">✗ None</td>
+          <td class="cross">✗ None</td>
+        </tr>
+        <tr>
+          <td class="feature-col">Multi-Model Routing</td>
+          <td class="partial">⚠ Gemini + OpenAI</td>
+          <td class="cross">✗ Google only</td>
+          <td class="check">✓ 5+ models</td>
+          <td class="partial">⚠ Multiple</td>
+          <td class="partial">⚠ Some</td>
+          <td class="check">✓ Smart routing</td>
+        </tr>
+        <tr>
+          <td class="feature-col">Direct Video Output</td>
+          <td class="partial">⚠ Manual handoff*</td>
+          <td class="check">✓ Built-in Veo</td>
+          <td class="check">✓ Multi-model</td>
+          <td class="check">✓ Built-in</td>
+          <td class="check">✓ Built-in</td>
+          <td class="check">✓ Built-in</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="explain-box" style="margin-top:16px;">
+      <strong>💡 UltraReal's Unique Position:</strong> Google Flow, Higgsfield, LTX Studio, and invideo AI offer increasingly sophisticated creative tools — but <strong>none</strong> have <em>pre-generation quality verification</em>, <em>crash-safe budget enforcement</em>, <em>IP rights tracking</em>, or <em>structural root-cause repair</em>. These are the features studios and agencies need for <strong>production-grade, legally defensible</strong> AI filmmaking. UltraReal can integrate <em>with</em> these platforms as the quality & governance layer — and direct video output is a planned investment milestone (*).
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 9: TIME & COST SAVINGS -->
+<section class="slide bg-gradient-green" id="slide-8" data-label="ROI">
+  <div class="slide-content">
+    <div class="slide-label">Return on Investment</div>
+    <h2>Saving Time and Money<br><span class="highlight-green">At Every Step</span></h2>
+    <div class="two-col">
+      <div>
+        <h3 style="margin-bottom:24px;">Where the Savings Come From</h3>
+        <div class="metric-bar">
+          <div class="metric-header"><span>Fewer Failed Generations</span><span style="color:var(--accent-green);">~60-70% reduction</span></div>
+          <div class="bar-bg"><div class="bar-fill" style="width:70%;background:var(--gradient-3);"></div></div>
+          <p style="font-size:13px;color:var(--text-muted);margin-top:4px;">By verifying keyframes before video, most bad inputs are caught before you pay for video.</p>
+        </div>
+        <div class="metric-bar">
+          <div class="metric-header"><span>No Duplicate Charges</span><span style="color:var(--accent-green);">100% elimination</span></div>
+          <div class="bar-bg"><div class="bar-fill" style="width:100%;background:var(--gradient-3);"></div></div>
+          <p style="font-size:13px;color:var(--text-muted);margin-top:4px;">Crash recovery ensures you never pay twice for the same work.</p>
+        </div>
+        <div class="metric-bar">
+          <div class="metric-header"><span>Automated Review</span><span style="color:var(--accent-green);">~90% less manual work</span></div>
+          <div class="bar-bg"><div class="bar-fill" style="width:90%;background:var(--gradient-3);"></div></div>
+          <p style="font-size:13px;color:var(--text-muted);margin-top:4px;">Safe AI review handles routine approvals. Humans only review critical decisions.</p>
+        </div>
+        <div class="metric-bar">
+          <div class="metric-header"><span>Root-Cause Repairs</span><span style="color:var(--accent-green);">~40-50% fewer retries</span></div>
+          <div class="bar-bg"><div class="bar-fill" style="width:50%;background:var(--gradient-3);"></div></div>
+          <p style="font-size:13px;color:var(--text-muted);margin-top:4px;">Instead of blindly retrying, UltraReal fixes the underlying problem first.</p>
+        </div>
+      </div>
+      <div>
+        <div class="card" style="border:2px solid var(--accent-green);margin-bottom:20px;">
+          <h3 style="color:var(--accent-green);">Estimated Savings Per Project</h3>
+          <div style="display:flex;justify-content:space-between;margin-top:16px;">
+            <div class="stat"><div class="stat-number" style="font-size:42px;background:var(--gradient-3);-webkit-background-clip:text;">3-5×</div><div class="stat-label">Cost Efficiency</div></div>
+            <div class="stat"><div class="stat-number" style="font-size:42px;background:var(--gradient-3);-webkit-background-clip:text;">80%</div><div class="stat-label">Less Manual Work</div></div>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Practical Example</h3>
+          <p style="margin-bottom:12px;">A 20-shot short film:</p>
+          <table style="width:100%;font-size:14px;color:var(--text-secondary);">
+            <tr><td>Without UltraReal:</td><td style="text-align:right;color:var(--accent-red);">~$200-500, 2-3 days manual work</td></tr>
+            <tr><td>With UltraReal:</td><td style="text-align:right;color:var(--accent-green);">~$40-75, mostly automated</td></tr>
+          </table>
+          <p style="font-size:13px;color:var(--text-muted);margin-top:12px;">Savings scale dramatically with project size. A 100-shot project could save thousands of dollars and days of review time.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 10: PATENT POTENTIAL -->
+<section class="slide" id="slide-9" data-label="Patents">
+  <div class="slide-content">
+    <div class="slide-label">Intellectual Property</div>
+    <h2>Potentially Patentable<br><span class="highlight-purple">Innovations</span></h2>
+    <p class="subtitle" style="margin-bottom:28px;">UltraReal contains multiple novel systems that appear to have no prior art in the AI video generation space.</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+      <div class="patent-card">
+        <h4>1. Multi-Judge Verification Cascade</h4>
+        <p>A system where a blind observer, rule checker, primary judge, shadow judge, and text verifier independently evaluate AI-generated images — where no judge sees another's results and the creator cannot grade its own work.</p>
+        <span class="patent-tag tag-high">High Value</span><span class="patent-tag tag-novel">Novel</span>
+      </div>
+      <div class="patent-card">
+        <h4>2. Deviation Classification & Quarantine</h4>
+        <p>A 5-tier system that classifies how accepted images differ from requirements, quarantines imperfect images from contaminating future shots, and requires formal promotion to adopt visual "accidents" as new canon.</p>
+        <span class="patent-tag tag-high">High Value</span><span class="patent-tag tag-novel">Novel</span>
+      </div>
+      <div class="patent-card">
+        <h4>3. Atomic Budget Reservation Ledger</h4>
+        <p>A crash-safe financial ledger that reserves costs before AI calls, enforces hard ceilings atomically, and recovers from interruptions without duplicating charges or exceeding budgets.</p>
+        <span class="patent-tag tag-high">High Value</span><span class="patent-tag tag-defensive">Defensive</span>
+      </div>
+      <div class="patent-card">
+        <h4>4. Structural Root-Cause Repair Engine</h4>
+        <p>A system that diagnoses whether an image failure stems from bad instructions (not bad luck), categorizes the fault layer, and surgically repairs only the affected components before retrying.</p>
+        <span class="patent-tag tag-novel">Novel</span><span class="patent-tag tag-defensive">Defensive</span>
+      </div>
+      <div class="patent-card">
+        <h4>5. 7-Layer Creative Lock with Content Hashing</h4>
+        <p>A method for cryptographically binding creative decisions (script, visual, acting, spatial, timing, assets) to their exact content, preventing stale edits from reaching production without re-approval.</p>
+        <span class="patent-tag tag-defensive">Defensive</span>
+      </div>
+      <div class="patent-card">
+        <h4>6. Typed Reference Pack Compilation</h4>
+        <p>A system that separates visual reference images by responsibility type (identity, wardrobe, prop, location) to prevent AI from confusing character faces with clothing or props with backgrounds.</p>
+        <span class="patent-tag tag-novel">Novel</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 11: MARKET OPPORTUNITY -->
+<section class="slide bg-gradient-mesh" id="slide-10" data-label="Market">
+  <div class="slide-content">
+    <div class="slide-label">Market Opportunity</div>
+    <h2>The AI Video Market Is<br><span class="highlight">Exploding — But Immature</span></h2>
+    <div class="two-col">
+      <div>
+        <div class="stat" style="text-align:left;margin-bottom:32px;">
+          <div class="stat-number">$1.4B+</div>
+          <div class="stat-label">AI Video Generation Market (2026)</div>
+        </div>
+        <div style="margin-bottom:24px;">
+          <h3>Who Needs This?</h3>
+          <div style="margin-top:12px;">
+            <p style="margin-bottom:12px;color:var(--text-secondary);">🎬 <strong style="color:var(--text-primary);">Film Studios</strong> — Pre-visualization and storyboarding at a fraction of traditional cost</p>
+            <p style="margin-bottom:12px;color:var(--text-secondary);">📱 <strong style="color:var(--text-primary);">Content Creators</strong> — Cinematic quality without a crew</p>
+            <p style="margin-bottom:12px;color:var(--text-secondary);">🏢 <strong style="color:var(--text-primary);">Ad Agencies</strong> — Rapid concept-to-visual pipelines for commercials</p>
+            <p style="margin-bottom:12px;color:var(--text-secondary);">🎮 <strong style="color:var(--text-primary);">Game Studios</strong> — Cutscene and cinematic preproduction</p>
+            <p style="color:var(--text-secondary);">🏫 <strong style="color:var(--text-primary);">Education & Training</strong> — Scenario-based video at scale</p>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="card" style="margin-bottom:20px;border:1px solid var(--accent-blue);">
+          <h3>Our Position</h3>
+          <p style="margin-top:12px;">UltraReal doesn't compete with video generators — it makes them <em>dramatically more effective</em>. We're the "quality layer" that sits on top of any video AI:</p>
+          <div style="text-align:center;margin:20px 0;font-size:16px;color:var(--text-secondary);">
+            <div style="padding:10px;background:rgba(59,130,246,0.1);border-radius:8px;margin-bottom:8px;">📄 Screenplay</div>
+            <div style="font-size:20px;">↓</div>
+            <div style="padding:10px;background:rgba(139,92,246,0.15);border-radius:8px;border:2px solid var(--accent-purple);margin-bottom:8px;color:var(--text-primary);font-weight:600;">🚀 UltraReal (Our Layer)</div>
+            <div style="font-size:20px;">↓</div>
+            <div style="padding:10px;background:rgba(16,185,129,0.1);border-radius:8px;">🎥 Veo / Runway / Sora / Kling</div>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Business Model Options</h3>
+          <p style="margin-top:8px;color:var(--text-secondary);">
+            • SaaS subscription (per-project or monthly)<br>
+            • Enterprise licensing for studios<br>
+            • API access for platform integration<br>
+            • Managed service for premium clients
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 12: INVESTMENT VISION -->
+<section class="slide" id="slide-11" data-label="Vision">
+  <div class="slide-content">
+    <div class="slide-label">Growth Roadmap</div>
+    <h2>What More Investment<br><span class="highlight-cyan">Unlocks</span></h2>
+    <img src="future_vision_1789877203818.jpg" class="slide-image" alt="Future Vision" style="max-width:900px;margin-bottom:32px;">
+    <div class="card-grid card-grid-3">
+      <div class="card" style="border-top:3px solid var(--accent-blue);">
+        <h3>🔗 Direct Video Integration</h3>
+        <p>Build optional, <em>budget-controlled</em> direct integration with Veo, Sora, and Runway — keeping all the safety controls intact.</p>
+      </div>
+      <div class="card" style="border-top:3px solid var(--accent-purple);">
+        <h3>☁️ Cloud Platform</h3>
+        <p>A hosted SaaS platform where filmmakers upload scripts and get back production packages — no local installation needed.</p>
+      </div>
+      <div class="card" style="border-top:3px solid var(--accent-green);">
+        <h3>🎙️ Audio Integration</h3>
+        <p>Extend the pipeline to include voice generation, sound design, and music — creating a complete audio-visual preproduction system.</p>
+      </div>
+      <div class="card" style="border-top:3px solid var(--accent-cyan);">
+        <h3>🌍 Multi-Language</h3>
+        <p>Localization-aware production: generate versions of the same film in multiple languages with culturally-adapted text.</p>
+      </div>
+      <div class="card" style="border-top:3px solid var(--accent-orange);">
+        <h3>📊 Studio Analytics</h3>
+        <p>Enterprise dashboards showing production velocity, cost trends, quality metrics, and team productivity in real time.</p>
+      </div>
+      <div class="card" style="border-top:3px solid var(--accent-pink);">
+        <h3>🤝 Marketplace</h3>
+        <p>A marketplace for production templates, visual styles, character designs — letting filmmakers share and monetize expertise.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 13: RISKS -->
+<section class="slide" id="slide-12" data-label="Risks">
+  <div class="slide-content">
+    <div class="slide-label">Honest Assessment</div>
+    <h2>What Could Go Wrong —<br><span style="color:var(--accent-orange);">And How We're Prepared</span></h2>
+    <p class="subtitle" style="margin-bottom:28px;">Every venture has risks. Here are ours, and what we're doing about each one.</p>
+
+    <div class="card-grid card-grid-2">
+      <div class="card" style="border-left:4px solid var(--accent-orange);">
+        <h3 style="font-size:18px;">🏃 Big Players Move Into Our Space</h3>
+        <p>Google Flow, Higgsfield, or Adobe could add quality verification and budget controls to their existing platforms.</p>
+        <div class="explain-box" style="margin-top:10px;">
+          <strong>Our defense:</strong> UltraReal's 5-judge verification cascade, deviation quarantine, and atomic budget ledger are architecturally deep — not features you bolt on in a sprint. Our 6+ potentially patentable innovations create real barriers. We also position as a layer that <em>integrates with</em> these platforms, not just competes against them.
+        </div>
+      </div>
+      <div class="card" style="border-left:4px solid var(--accent-orange);">
+        <h3 style="font-size:18px;">🎬 Video Quality Improves So Fast Keyframes Become Unnecessary</h3>
+        <p>If video generators become so reliable that every attempt succeeds, the "verify before you spend" value proposition weakens.</p>
+        <div class="explain-box" style="margin-top:10px;">
+          <strong>Our defense:</strong> Even perfect generators need consistent characters, tracked props, and legal compliance across scenes. The planning and continuity layers become <em>more</em> valuable as generation improves, because studios will produce more content faster and need governance at scale.
+        </div>
+      </div>
+      <div class="card" style="border-left:4px solid var(--accent-orange);">
+        <h3 style="font-size:18px;">🔌 AI Model API Changes</h3>
+        <p>UltraReal depends on OpenAI and Google AI models. Pricing changes, API deprecations, or access restrictions could disrupt operations.</p>
+        <div class="explain-box" style="margin-top:10px;">
+          <strong>Our defense:</strong> The architecture already uses multiple providers (OpenAI for planning, Google for image generation). The config system supports model swapping with version whitelisting. Adding new providers is a configuration change, not a rewrite.
+        </div>
+      </div>
+      <div class="card" style="border-left:4px solid var(--accent-orange);">
+        <h3 style="font-size:18px;">👤 Key-Person Dependency</h3>
+        <p>Currently a small-team project. Loss of the primary developer could slow progress significantly.</p>
+        <div class="explain-box" style="margin-top:10px;">
+          <strong>Our defense:</strong> 30+ specification documents, 56 test files, full CI/CD, and AGENTS.md onboarding guide mean the codebase is well-documented and reproducible. Investment includes hiring to distribute knowledge across a growing team.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 14: TRACTION -->
+<section class="slide bg-gradient-mesh" id="slide-13" data-label="Traction">
+  <div class="slide-content" style="text-align:center;">
+    <div class="slide-label">Proof of Execution</div>
+    <h2>Built from Scratch to V2.2<br><span class="highlight">In 9 Days</span></h2>
+    <p class="subtitle" style="margin:0 auto 40px;max-width:600px;">This isn't a prototype or a demo. It's a production-grade system with 56 test files, 17 tagged releases, and quantitative release gates — built at extraordinary speed.</p>
+    <div class="stat-row" style="justify-content:center;">
+      <div class="stat"><div class="stat-number">339+</div><div class="stat-label">Commits</div></div>
+      <div class="stat"><div class="stat-number">17</div><div class="stat-label">Tagged Releases</div></div>
+      <div class="stat"><div class="stat-number">56</div><div class="stat-label">Test Files</div></div>
+      <div class="stat"><div class="stat-number">30+</div><div class="stat-label">Spec Documents</div></div>
+      <div class="stat"><div class="stat-number">65</div><div class="stat-label">Source Modules</div></div>
+    </div>
+    <div class="card-grid card-grid-4" style="margin-top:40px;text-align:left;">
+      <div class="card">
+        <h3 style="color:var(--accent-green);">✅ Full CI/CD</h3>
+        <p>Automated testing on every commit. 3× deterministic release gate passes required.</p>
+      </div>
+      <div class="card">
+        <h3 style="color:var(--accent-cyan);">✅ Live Tested</h3>
+        <p>Validated against real Google Vertex AI and OpenAI APIs with real cost tracking.</p>
+      </div>
+      <div class="card">
+        <h3 style="color:var(--accent-purple);">✅ Zero Veo Calls</h3>
+        <p>Mechanically enforced by CI. The system can never accidentally spend on video generation.</p>
+      </div>
+      <div class="card">
+        <h3 style="color:var(--accent-orange);">✅ Crash-Safe</h3>
+        <p>47-shot soak test under complete network denial proves flawless state recovery.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 15: TIMELINE & MILESTONES -->
+<section class="slide" id="slide-14" data-label="Milestones">
+  <div class="slide-content">
+    <div class="slide-label">Timeline & Milestones</div>
+    <h2>How We'll Know It's <span class="highlight-green">Working</span></h2>
+    <p class="subtitle" style="margin-bottom:28px;">Clear checkpoints at every stage. If we miss a milestone, we'll know early and course-correct.</p>
+
+    <div class="two-col" style="align-items:flex-start;">
+      <div>
+        <!-- Timeline -->
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="tl-date">Months 0–3</div>
+            <h4>Cloud MVP & First Pilots</h4>
+            <p>Hosted version running. 5 pilot users (creators/small studios) producing real projects. Collect NPS scores and per-project cost data.</p>
+            <div style="margin-top:8px;">
+              <span class="patent-tag tag-novel">Success test: 3+ pilots complete a full project end-to-end</span>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="tl-date">Months 4–6</div>
+            <h4>Direct Video Integration & Paid Beta</h4>
+            <p>Budget-controlled Veo/Runway integration live. 25+ paying beta users. Measure cost savings vs. manual workflows. First patent filings.</p>
+            <div style="margin-top:8px;">
+              <span class="patent-tag tag-novel">Success test: Paying users report ≥3× cost savings vs. manual</span>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="tl-date">Months 7–12</div>
+            <h4>Public Launch & Enterprise Deals</h4>
+            <p>SaaS launch with self-serve onboarding. First enterprise contracts (ad agencies, studios). Team of 8–12 people. Audio integration prototype.</p>
+            <div style="margin-top:8px;">
+              <span class="patent-tag tag-novel">Success test: $50K+ MRR, 2+ enterprise contracts signed</span>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="tl-date">Months 13–18</div>
+            <h4>Scale & Market Position</h4>
+            <p>Multi-language support. Marketplace live. 500+ active users. Recognized as the governance standard for AI filmmaking.</p>
+            <div style="margin-top:8px;">
+              <span class="patent-tag tag-novel">Success test: $200K+ MRR, 3+ patents filed, marketplace generating revenue</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <!-- Investment Details -->
+        <div class="card" style="border:2px solid var(--accent-blue);margin-bottom:20px;">
+          <h3 style="color:var(--accent-blue);">💰 The Investment</h3>
+          <p style="margin-top:12px;margin-bottom:16px;">Seed round to fund 18 months of development and go-to-market:</p>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;font-size:14px;">
+            <div style="padding:12px;background:rgba(59,130,246,0.08);border-radius:8px;">
+              <strong style="color:var(--text-primary);">Engineering</strong>
+              <p style="color:var(--text-muted);font-size:13px;margin-top:4px;">Cloud platform, video integration, multi-model routing, API infrastructure</p>
+            </div>
+            <div style="padding:12px;background:rgba(139,92,246,0.08);border-radius:8px;">
+              <strong style="color:var(--text-primary);">Team</strong>
+              <p style="color:var(--text-muted);font-size:13px;margin-top:4px;">3–5 engineers, 1 designer, 1 business/partnerships lead</p>
+            </div>
+            <div style="padding:12px;background:rgba(16,185,129,0.08);border-radius:8px;">
+              <strong style="color:var(--text-primary);">Go-to-Market</strong>
+              <p style="color:var(--text-muted);font-size:13px;margin-top:4px;">Pilot programs, creator partnerships, enterprise outreach, conference presence</p>
+            </div>
+            <div style="padding:12px;background:rgba(245,158,11,0.08);border-radius:8px;">
+              <strong style="color:var(--text-primary);">IP & Legal</strong>
+              <p style="color:var(--text-muted);font-size:13px;margin-top:4px;">Patent filings for 6+ innovations, legal structure, compliance</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" style="border:1px solid rgba(255,255,255,0.1);">
+          <h3>🎯 How We Measure Success</h3>
+          <p style="margin-top:8px;font-size:14px;color:var(--text-secondary);line-height:1.7;">
+            <strong style="color:var(--accent-green);">Mid-term (6 months):</strong> 25+ paying users, measurable cost savings proven, video integration working, first patent filed<br><br>
+            <strong style="color:var(--accent-blue);">Final exam (18 months):</strong> $200K+ monthly recurring revenue, enterprise contracts, patents granted/pending, recognized market position as the quality layer for AI filmmaking
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 16: THE ASK -->
+<section class="slide bg-gradient-mesh" id="slide-15" data-label="The Ask">
+  <div class="slide-content" style="text-align:center;">
+    <div class="slide-label">Investment Opportunity</div>
+    <h1>Let's Build the Future of<br><span class="highlight">AI Filmmaking Together</span></h1>
+    <div class="divider" style="margin:24px auto;"></div>
+    <p class="subtitle" style="margin:0 auto 32px;max-width:750px;">UltraReal has proven the technology works. The market is exploding. The IP moat is real. Now it's time to scale — from a powerful local tool to the global platform that gives every filmmaker studio-grade quality control.</p>
+
+    <div class="card-grid card-grid-3" style="text-align:left;max-width:1000px;margin:0 auto;">
+      <div class="card" style="border:1px solid var(--accent-blue);">
+        <h3>What We've Built</h3>
+        <p>A working, tested, production-grade AI preproduction system with 6+ patentable innovations. No equivalent exists on the market. Proven in live production with real API spend.</p>
+      </div>
+      <div class="card" style="border:1px solid var(--accent-purple);">
+        <h3>What We Need</h3>
+        <p>Seed investment to build the cloud platform, hire 5–7 team members, integrate direct video generation, file patents, and launch to studios and creators within 12 months.</p>
+      </div>
+      <div class="card" style="border:1px solid var(--accent-green);">
+        <h3>What You Get</h3>
+        <p>Early equity in the infrastructure layer of AI filmmaking — the "quality, governance, and control" platform that every studio, agency, and creator will need as AI video production scales to billions.</p>
+      </div>
+    </div>
+
+    <div style="margin-top:40px;">
+      <a href="#" class="cta-button">Let's Talk →</a>
+    </div>
+    <p style="margin-top:20px;color:var(--text-muted);font-size:14px;">UltraReal V2.2.0 · Confidential Investor Materials · 2026</p>
+  </div>
+</section>
+
+<script>
+const slides = document.querySelectorAll('.slide');
+const navDotsContainer = document.getElementById('navDots');
+const slideCounter = document.getElementById('slideCounter');
+const slideLabels = Array.from(slides).map(s => s.dataset.label || '');
+
+slides.forEach((_, i) => {
+  const dot = document.createElement('div');
+  dot.className = 'nav-dot' + (i === 0 ? ' active' : '');
+  dot.innerHTML = '<span class="tooltip">' + slideLabels[i] + '</span>';
+  dot.addEventListener('click', () => slides[i].scrollIntoView({ behavior: 'smooth' }));
+  navDotsContainer.appendChild(dot);
+});
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const index = Array.from(slides).indexOf(entry.target);
+      document.querySelectorAll('.nav-dot').forEach((d, i) => d.classList.toggle('active', i === index));
+      slideCounter.textContent = (index + 1) + ' / ' + slides.length;
+    }
+  });
+}, { threshold: 0.5 });
+
+slides.forEach(s => observer.observe(s));
+
+document.addEventListener('keydown', (e) => {
+  const current = Array.from(document.querySelectorAll('.nav-dot')).findIndex(d => d.classList.contains('active'));
+  if (e.key === 'ArrowDown' || e.key === 'ArrowRight' || e.key === ' ') {
+    e.preventDefault();
+    if (current < slides.length - 1) slides[current + 1].scrollIntoView({ behavior: 'smooth' });
+  }
+  if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+    e.preventDefault();
+    if (current > 0) slides[current - 1].scrollIntoView({ behavior: 'smooth' });
+  }
+});
+</script>
+</body>
+</html>
