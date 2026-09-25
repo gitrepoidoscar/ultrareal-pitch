@@ -670,7 +670,7 @@
       <div class="card">
         <div class="card-icon" style="background:rgba(16,185,129,0.15);">🖼️</div>
         <h3>Verified Keyframes</h3>
-        <p>AI generates the key images for each shot, then runs them through 5 independent quality checks before accepting. Failed images are caught <em>before</em> you spend money on video.</p>
+        <p>AI generates the key images for each shot, then runs them through <strong>6 independent verification layers</strong> — including an external advisory system — before accepting. Failed images are caught <em>before</em> you spend money on video.</p>
       </div>
       <div class="card">
         <div class="card-icon" style="background:rgba(6,182,212,0.15);">🔒</div>
@@ -754,7 +754,7 @@
         <div class="stage-num">STAGE 8</div>
         <div class="stage-icon">✅</div>
         <div class="stage-title">Verify</div>
-        <div class="stage-desc">5 independent judges check every image before acceptance.</div>
+        <div class="stage-desc">Multi-judge cascade + advisory layer verify every image.</div>
       </div>
     </div>
     <div class="explain-box" style="margin-top:24px;">
@@ -762,7 +762,7 @@
     </div>
     <div class="stat-row" style="justify-content:center;">
       <div class="stat"><div class="stat-number">100%</div><div class="stat-label">Story Coverage</div></div>
-      <div class="stat"><div class="stat-number">5</div><div class="stat-label">Quality Judges</div></div>
+      <div class="stat"><div class="stat-number">6</div><div class="stat-label">Verification Layers</div></div>
       <div class="stat"><div class="stat-number">7</div><div class="stat-label">Creative Locks</div></div>
       <div class="stat"><div class="stat-number">$0</div><div class="stat-label">Uncontrolled Spend</div></div>
     </div>
@@ -850,7 +850,12 @@
       <div class="timeline-item">
         <div class="tl-date">In Development · September 2026</div>
         <h4>Continuity Correctness Hardening</h4>
-        <p>137 commits adding <strong>99 new modules</strong> for forensic-grade visual verification: cryptographic evidence chains, multi-judge AND-gate (both primary + shadow must pass), clock-face geometric verification with sub-pixel precision, formal dispute adjudication, typed human criterion review, and capability-aware routing that prevents unqualified judges from issuing verdicts. <em>Live-validated against the "Second Hand" short film production.</em></p>
+        <p>137 commits adding <strong>99 new modules</strong> for forensic-grade visual verification: cryptographic evidence chains, multi-judge AND-gate (both primary + shadow must pass), clock-face geometric verification with sub-pixel precision, formal dispute adjudication, typed human criterion review (H01–H07), and capability-aware routing that prevents unqualified judges from issuing verdicts. Includes <strong>Jev Advisory Integration</strong> — an external AI advisory layer that provides independent second-opinion analysis on quality decisions. <em>Live-validated against the "Second Hand" short film production.</em></p>
+      </div>
+      <div class="timeline-item">
+        <div class="tl-date">In Development · September 2026</div>
+        <h4>Jev Advisory Integration</h4>
+        <p>A pluggable <strong>external AI advisory system</strong> that provides independent quality and creative analysis outside the main verification pipeline. Jev advisors can evaluate candidate images, recommend acceptance thresholds, and surface quality patterns the core judges might miss — without having veto power over the pipeline. Enables third-party quality plugins and domain-specific expert review.</p>
       </div>
       <div class="timeline-item">
         <div class="tl-date">In Development · September 2026</div>
@@ -1030,11 +1035,20 @@
           <td class="cross">✗ None</td>
           <td class="cross">✗ None</td>
         </tr>
+        <tr>
+          <td class="feature-col">External Advisory Layer</td>
+          <td class="check">✓ Jev pluggable</td>
+          <td class="cross">✗ None</td>
+          <td class="cross">✗ None</td>
+          <td class="cross">✗ None</td>
+          <td class="cross">✗ None</td>
+          <td class="cross">✗ None</td>
+        </tr>
       </tbody>
     </table>
 
     <div class="explain-box" style="margin-top:16px;">
-      <strong>💡 UltraReal's Unique Position:</strong> Google Flow, Higgsfield, LTX Studio, and invideo AI offer increasingly sophisticated creative tools — but <strong>none</strong> have <em>multi-model verification consensus</em>, <em>crash-safe budget enforcement</em>, <em>IP rights tracking</em>, <em>regional pixel repair</em>, or <em>structural root-cause repair</em>. These are the features studios and agencies need for <strong>production-grade, legally defensible</strong> AI filmmaking. UltraReal can integrate <em>with</em> these platforms as the quality & governance layer — and direct video output is a planned investment milestone (*).
+      <strong>💡 UltraReal's Unique Position:</strong> Google Flow, Higgsfield, LTX Studio, and invideo AI offer increasingly sophisticated creative tools — but <strong>none</strong> have <em>multi-model verification consensus</em>, <em>pluggable advisory agents</em>, <em>crash-safe budget enforcement</em>, <em>IP rights tracking</em>, <em>regional pixel repair</em>, or <em>structural root-cause repair</em>. These are the features studios and agencies need for <strong>production-grade, legally defensible</strong> AI filmmaking. UltraReal can integrate <em>with</em> these platforms as the quality & governance layer — and direct video output is a planned investment milestone (*).
     </div>
   </div>
 </section>
@@ -1094,7 +1108,7 @@
 <section class="slide" id="slide-9" data-label="Patents">
   <div class="slide-content">
     <div class="slide-label">Intellectual Property</div>
-    <h2>10+ Potentially Patentable<br><span class="highlight-purple">Innovations</span></h2>
+    <h2>11+ Potentially Patentable<br><span class="highlight-purple">Innovations</span></h2>
     <p class="subtitle" style="margin-bottom:28px;">UltraReal contains multiple novel systems that appear to have no prior art in the AI video generation space.</p>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
       <div class="patent-card">
@@ -1146,6 +1160,11 @@
         <h4>10. Capability-Aware Judge Routing</h4>
         <p>A system that evaluates each AI judge's capability for specific verification criteria (e.g., clock reading, text detection) and routes only eligible judges to produce verdicts — preventing unqualified assessments from contaminating acceptance decisions.</p>
         <span class="patent-tag tag-novel">Novel</span>
+      </div>
+      <div class="patent-card">
+        <h4>11. Pluggable Advisory Layer (Jev)</h4>
+        <p>An external AI advisory architecture that provides independent, non-blocking quality analysis alongside the core verification pipeline. Advisory agents can evaluate candidates, recommend thresholds, and surface patterns — without veto power, enabling third-party quality plugins and domain-specific expert extension.</p>
+        <span class="patent-tag tag-novel">Novel</span><span class="patent-tag tag-high">High Value</span>
       </div>
     </div>
   </div>
@@ -1246,7 +1265,7 @@
         <h3 style="font-size:18px;">🏃 Big Players Move Into Our Space</h3>
         <p>Google Flow, Higgsfield, or Adobe could add quality verification and budget controls to their existing platforms.</p>
         <div class="explain-box" style="margin-top:10px;">
-          <strong>Our defense:</strong> UltraReal's 5-judge verification cascade, deviation quarantine, and atomic budget ledger are architecturally deep — not features you bolt on in a sprint. Our 6+ potentially patentable innovations create real barriers. We also position as a layer that <em>integrates with</em> these platforms, not just competes against them.
+          <strong>Our defense:</strong> UltraReal's multi-judge verification cascade, deviation quarantine, advisory layer, and atomic budget ledger are architecturally deep — not features you bolt on in a sprint. Our 11+ potentially patentable innovations create real barriers. We also position as a layer that <em>integrates with</em> these platforms, not just competes against them.
         </div>
       </div>
       <div class="card" style="border-left:4px solid var(--accent-orange);">
@@ -1374,7 +1393,7 @@
             </div>
             <div style="padding:12px;background:rgba(245,158,11,0.08);border-radius:8px;">
               <strong style="color:var(--text-primary);">IP & Legal</strong>
-              <p style="color:var(--text-muted);font-size:13px;margin-top:4px;">Patent filings for 6+ innovations, legal structure, compliance</p>
+              <p style="color:var(--text-muted);font-size:13px;margin-top:4px;">Patent filings for 11+ innovations, legal structure, compliance</p>
             </div>
           </div>
         </div>
@@ -1402,7 +1421,7 @@
     <div class="card-grid card-grid-3" style="text-align:left;max-width:1000px;margin:0 auto;">
       <div class="card" style="border:1px solid var(--accent-blue);">
         <h3>What We've Built</h3>
-        <p>A working, tested, 133K-line production-grade AI preproduction system with 10+ patentable innovations, 164 source modules, and 300+ test files. No equivalent exists on the market. Proven in live production with real API spend.</p>
+        <p>A working, tested, 133K-line production-grade AI preproduction system with 11+ patentable innovations, 164 source modules, 300+ test files, and a pluggable advisory architecture. No equivalent exists on the market. Proven in live production with real API spend.</p>
       </div>
       <div class="card" style="border:1px solid var(--accent-purple);">
         <h3>What We Need</h3>
@@ -1417,19 +1436,8 @@
     <!-- CONTACT FORM -->
     <div style="margin-top:40px;">
       <h3 style="font-family:'Space Grotesk',sans-serif;font-size:24px;margin-bottom:24px;">Get in Touch</h3>
-      <!--
-        FORMSUBMIT.CO: After the first real submission, you'll receive an
-        activation email. Once activated, FormSubmit gives you a hashed
-        endpoint URL (e.g. https://formsubmit.co/abc123def456) — replace
-        the action below with that hash to remove the email from source.
-      -->
-      <form class="contact-form" action="https://formsubmit.co/keylentona@gmail.com" method="POST">
-        <!-- FormSubmit config -->
-        <input type="hidden" name="_captcha" value="false">
-        <input type="hidden" name="_subject" value="UltraReal Investor Inquiry">
-        <input type="hidden" name="_template" value="box">
-        <input type="text" name="_honey" style="display:none">
-
+      <form class="contact-form" id="contactForm" onsubmit="return handleContactSubmit(event)">
+        <input type="text" name="_honey" style="display:none" tabindex="-1">
         <div class="form-row">
           <div class="form-group">
             <label for="contact-name">Your Name</label>
@@ -1453,12 +1461,16 @@
         <div class="form-row">
           <div class="form-group">
             <label for="contact-message">Message</label>
-            <textarea id="contact-message" name="message" placeholder="I'd like to learn more about…" required></textarea>
+            <textarea id="contact-message" name="message" placeholder="I'd like to learn more about UltraReal…" required></textarea>
           </div>
         </div>
-        <button type="submit">Send Message →</button>
-        <p class="form-note">Your message goes directly to the UltraReal team. We typically respond within 24 hours.</p>
+        <button type="submit" id="contactSubmitBtn">Send Message →</button>
+        <p class="form-note">Opens your email client with a pre-composed message to the UltraReal team.</p>
       </form>
+      <div id="contactSuccess" style="display:none;margin-top:20px;padding:20px;background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.3);border-radius:12px;text-align:center;">
+        <p style="color:var(--accent-green);font-size:16px;font-weight:600;">✓ Your email client should be open</p>
+        <p style="color:var(--text-secondary);font-size:14px;margin-top:8px;">If it didn't open, you can reach us directly at <span id="fallbackEmail" style="color:var(--accent-cyan);cursor:pointer;text-decoration:underline;"></span></p>
+      </div>
     </div>
 
     <p style="margin-top:32px;color:var(--text-muted);font-size:14px;">UltraReal V2.2.0 + V2.3 Development · Confidential Investor Materials · September 2026</p>
@@ -1466,6 +1478,39 @@
 </section>
 
 <script>
+// Email obfuscation — not visible in page source as plain text
+const _u = 'keylentona';
+const _d = 'gmail.com';
+function _e() { return _u + '@' + _d; }
+
+function handleContactSubmit(e) {
+  e.preventDefault();
+  const name = document.getElementById('contact-name').value.trim();
+  const email = document.getElementById('contact-email').value.trim();
+  const company = document.getElementById('contact-company').value.trim();
+  const role = document.getElementById('contact-role').value.trim();
+  const message = document.getElementById('contact-message').value.trim();
+
+  const subject = encodeURIComponent('UltraReal Investor Inquiry — ' + name + (company ? ' (' + company + ')' : ''));
+  let body = 'Name: ' + name + '\n';
+  body += 'Email: ' + email + '\n';
+  if (company) body += 'Company: ' + company + '\n';
+  if (role) body += 'Role: ' + role + '\n';
+  body += '\n' + message + '\n';
+
+  window.location.href = 'mail' + 'to:' + _e() + '?subject=' + subject + '&body=' + encodeURIComponent(body);
+
+  // Show success state
+  document.getElementById('contactForm').style.display = 'none';
+  const successDiv = document.getElementById('contactSuccess');
+  successDiv.style.display = 'block';
+  const fallback = document.getElementById('fallbackEmail');
+  fallback.textContent = _e();
+  fallback.onclick = function() { window.location.href = 'mail' + 'to:' + _e(); };
+  return false;
+}
+
+// --- Slide navigation ---
 const slides = document.querySelectorAll('.slide');
 const navDotsContainer = document.getElementById('navDots');
 const slideCounter = document.getElementById('slideCounter');
