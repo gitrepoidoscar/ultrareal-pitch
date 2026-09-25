@@ -512,6 +512,94 @@
   .slide-content > * {
     animation: fadeInUp 0.6s ease-out both;
   }
+  .contact-form {
+    max-width: 560px;
+    margin: 0 auto;
+    text-align: left;
+  }
+
+  .contact-form .form-row {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+
+  .contact-form .form-group {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .contact-form label {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    margin-bottom: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .contact-form input,
+  .contact-form textarea {
+    background: var(--bg-card);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 10px;
+    padding: 12px 16px;
+    color: var(--text-primary);
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    outline: none;
+    width: 100%;
+  }
+
+  .contact-form input::placeholder,
+  .contact-form textarea::placeholder {
+    color: var(--text-muted);
+  }
+
+  .contact-form input:focus,
+  .contact-form textarea:focus {
+    border-color: var(--accent-blue);
+    box-shadow: 0 0 0 3px rgba(59,130,246,0.15);
+  }
+
+  .contact-form textarea {
+    resize: vertical;
+    min-height: 100px;
+  }
+
+  .contact-form button[type="submit"] {
+    display: inline-block;
+    padding: 14px 40px;
+    background: var(--gradient-1);
+    color: white;
+    font-size: 17px;
+    font-weight: 600;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    margin-top: 8px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    font-family: 'Inter', sans-serif;
+    width: 100%;
+  }
+
+  .contact-form button[type="submit"]:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(59,130,246,0.4);
+  }
+
+  .form-note {
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-top: 12px;
+    text-align: center;
+  }
+
+  @media (max-width: 600px) {
+    .contact-form .form-row { flex-direction: column; gap: 12px; }
+  }
 </style>
 </head>
 <body>
@@ -525,7 +613,7 @@
   <div class="slide-content" style="text-align:center;">
     <div class="slide-label">Investor Presentation · 2026</div>
     <h1>The AI Film Studio<br>That <span class="highlight">Never Wastes a Dollar</span></h1>
-    <p class="subtitle" style="margin:0 auto 32px;">UltraReal V2 transforms written screenplays into production-ready film assets — with built-in quality checks, cost controls, and creative safeguards that don't exist anywhere else.</p>
+    <p class="subtitle" style="margin:0 auto 32px;">UltraReal V2 transforms written screenplays into production-ready film assets — with multi-model quality verification, forensic continuity tracking, cost controls, and creative safeguards that don't exist anywhere else.</p>
     <img src="hero_ai_studio_1789877175189.jpg" class="slide-image" alt="AI Film Production Studio" style="max-width:900px; margin: 0 auto;">
   </div>
 </section>
@@ -685,31 +773,35 @@
 <section class="slide bg-gradient-green" id="slide-4" data-label="Quality System">
   <div class="slide-content">
     <div class="slide-label">Quality Assurance</div>
-    <h2>Every Image Passes Through<br><span class="highlight-green">5 Independent Judges</span></h2>
-    <p class="subtitle" style="margin-bottom:16px;">No other AI film tool has a multi-layered verification system. This is how UltraReal catches problems <em>before</em> they cost you money.</p>
+    <h2>Every Image Passes Through<br><span class="highlight-green">A Multi-Judge Verification Cascade</span></h2>
+    <p class="subtitle" style="margin-bottom:16px;">No other AI film tool has a multi-layered, multi-model verification system with formal dispute resolution. This is how UltraReal catches problems <em>before</em> they cost you money.</p>
     <img src="verification_cascade_1789877193572.jpg" class="slide-image" alt="Verification Cascade" style="max-width:900px;">
     <div class="card-grid card-grid-3" style="margin-top:28px;">
       <div class="card">
         <h3>🔍 Blind Observer</h3>
-        <p>An AI examines the image <em>without seeing the prompt</em> — just describes what it sees. This catches issues the prompt-aware models might miss or excuse.</p>
+        <p>An AI (GPT-5.6 Terra) examines the image <em>without seeing the prompt</em> — just describes what it sees: people count, anatomy, objects, lighting. Catches issues prompt-aware models might excuse.</p>
       </div>
       <div class="card">
-        <h3>📏 Rule Checker</h3>
-        <p>Automated checks: correct number of people? Right aspect ratio? Minimum resolution? No visual artifacts? These are yes/no checks, no subjective judgment.</p>
+        <h3>📏 Deterministic Screening</h3>
+        <p>Automated rules: correct people count? Limb anatomy intact? Forbidden objects absent? Wardrobe keywords match? These are hard yes/no checks — no subjective judgment.</p>
       </div>
       <div class="card">
-        <h3>⚖️ Independent Judge</h3>
-        <p>A separate AI model (not the one that created the image) scores it against the requirements. The creator can never grade its own homework.</p>
+        <h3>⚖️ Primary Continuity Verifier</h3>
+        <p>A separate AI model (GPT-5.6 Sol) scores the image across <strong>9 criteria</strong>: identity, wardrobe, hero objects, spatial continuity, counts, acting, cinematography, artifacts, and physical state.</p>
       </div>
     </div>
-    <div class="card-grid card-grid-2" style="margin-top:0;">
+    <div class="card-grid card-grid-3" style="margin-top:0;">
       <div class="card">
-        <h3>👤 Shadow Judge</h3>
-        <p>A second independent opinion runs silently. If the shadow judge disagrees with the primary judge, the conflict is flagged for human review.</p>
+        <h3>👤 Shadow Judge (AND-Gate)</h3>
+        <p>A second AI (Gemini 2.5 Pro) runs independently. <strong>Both judges must agree</strong> for acceptance. If either flags a hard failure, the image is rejected. Dual-model consensus eliminates single-model blind spots.</p>
       </div>
       <div class="card">
         <h3>🔤 Text Verification (OCR)</h3>
-        <p>If the image should contain readable text (a sign, phone screen, letter), local text-reading software verifies the exact spelling — no cloud calls needed.</p>
+        <p>If the image contains readable text (signs, phone screens, watches), local Tesseract OCR verifies exact spelling and positioning — completely offline, zero cloud calls.</p>
+      </div>
+      <div class="card">
+        <h3>⚔️ Dispute Resolution</h3>
+        <p>When judges disagree, findings enter a formal adjudication pipeline with evidence review, criterion-specific arbitration, and optional human escalation — rather than silent rejection.</p>
       </div>
     </div>
   </div>
@@ -752,33 +844,33 @@
 <!-- SLIDE 7: WHAT'S NEW -->
 <section class="slide bg-gradient-mesh" id="slide-6" data-label="What's New">
   <div class="slide-content">
-    <div class="slide-label">Latest Release · V2.2</div>
-    <h2>What's New:<br><span class="highlight-purple">AI That Reviews Its Own Work</span></h2>
+    <div class="slide-label">Latest Development · September 2026</div>
+    <h2>What's New:<br><span class="highlight-purple">Forensic-Grade Visual Verification</span></h2>
     <div class="timeline">
+      <div class="timeline-item">
+        <div class="tl-date">In Development · September 2026</div>
+        <h4>Continuity Correctness Hardening</h4>
+        <p>137 commits adding <strong>99 new modules</strong> for forensic-grade visual verification: cryptographic evidence chains, multi-judge AND-gate (both primary + shadow must pass), clock-face geometric verification with sub-pixel precision, formal dispute adjudication, typed human criterion review, and capability-aware routing that prevents unqualified judges from issuing verdicts. <em>Live-validated against the "Second Hand" short film production.</em></p>
+      </div>
+      <div class="timeline-item">
+        <div class="tl-date">In Development · September 2026</div>
+        <h4>Regional Visual Repair</h4>
+        <p>Fix localized image defects (wrong prop, bad text) <em>without regenerating the entire frame</em>. Deterministic crop-composite with pixel-integrity guarantee — outside pixels stay 100% untouched. Saves money by repairing rather than re-rolling.</p>
+      </div>
       <div class="timeline-item">
         <div class="tl-date">V2.2 · August 2026</div>
         <h4>Pixel-Perfect Continuity</h4>
-        <p>Reference images are now recompiled from <em>actual accepted frames</em> for every shot. Characters maintain exact visual consistency. Overridden images are quarantined — they can't contaminate future shots.</p>
+        <p>Reference images recompiled from <em>actual accepted frames</em> for every shot. Characters maintain exact visual consistency. Overridden images quarantined — they can't contaminate future shots.</p>
       </div>
       <div class="timeline-item">
         <div class="tl-date">V2.1 · August 2026</div>
-        <h4>Smart Auto-Review</h4>
-        <p>Routine creative proposals are reviewed and approved by AI automatically — cutting operator workload by 90%. Material decisions (budget, rights, creative conflicts) are still escalated to humans. Calibrated against 46 test cases with 95%+ accuracy.</p>
-      </div>
-      <div class="timeline-item">
-        <div class="tl-date">V2.1 · August 2026</div>
-        <h4>Self-Healing Repairs</h4>
-        <p>When an image fails because the underlying plan is wrong (not random luck), UltraReal diagnoses the root cause and fixes it — then retries. No more wasting money regenerating from broken instructions.</p>
-      </div>
-      <div class="timeline-item">
-        <div class="tl-date">V2.1 · August 2026</div>
-        <h4>Visual Review Dashboard</h4>
-        <p>A browser-based review interface for teams to inspect, approve, or repair creative plans and generated images — with role-based access and real-time progress updates.</p>
+        <h4>Smart Auto-Review & Dashboard</h4>
+        <p>Routine creative proposals reviewed and approved by AI automatically — cutting operator workload by 90%. Browser-based review interface for teams. Self-healing structural repairs diagnose root causes instead of blind retrying.</p>
       </div>
       <div class="timeline-item">
         <div class="tl-date">V2.0 · August 2026</div>
         <h4>Production-Grade Foundation</h4>
-        <p>SQLite state ledger, content-addressed caching, typed production graphs, event sourcing, creative locks, budget enforcement, rights governance, and the 5-judge verification cascade.</p>
+        <p>SQLite state ledger, content-addressed caching, typed production graphs, event sourcing, creative locks, budget enforcement, rights governance, and the multi-judge verification cascade.</p>
       </div>
     </div>
   </div>
@@ -920,11 +1012,29 @@
           <td class="check">✓ Built-in</td>
           <td class="check">✓ Built-in</td>
         </tr>
+        <tr>
+          <td class="feature-col">Regional Image Repair</td>
+          <td class="check">✓ Pixel-composite</td>
+          <td class="cross">✗ Regenerate</td>
+          <td class="cross">✗ Regenerate</td>
+          <td class="cross">✗ Regenerate</td>
+          <td class="cross">✗ Regenerate</td>
+          <td class="cross">✗ Regenerate</td>
+        </tr>
+        <tr>
+          <td class="feature-col">Dispute Adjudication</td>
+          <td class="check">✓ Formal protocol</td>
+          <td class="cross">✗ None</td>
+          <td class="cross">✗ None</td>
+          <td class="cross">✗ None</td>
+          <td class="cross">✗ None</td>
+          <td class="cross">✗ None</td>
+        </tr>
       </tbody>
     </table>
 
     <div class="explain-box" style="margin-top:16px;">
-      <strong>💡 UltraReal's Unique Position:</strong> Google Flow, Higgsfield, LTX Studio, and invideo AI offer increasingly sophisticated creative tools — but <strong>none</strong> have <em>pre-generation quality verification</em>, <em>crash-safe budget enforcement</em>, <em>IP rights tracking</em>, or <em>structural root-cause repair</em>. These are the features studios and agencies need for <strong>production-grade, legally defensible</strong> AI filmmaking. UltraReal can integrate <em>with</em> these platforms as the quality & governance layer — and direct video output is a planned investment milestone (*).
+      <strong>💡 UltraReal's Unique Position:</strong> Google Flow, Higgsfield, LTX Studio, and invideo AI offer increasingly sophisticated creative tools — but <strong>none</strong> have <em>multi-model verification consensus</em>, <em>crash-safe budget enforcement</em>, <em>IP rights tracking</em>, <em>regional pixel repair</em>, or <em>structural root-cause repair</em>. These are the features studios and agencies need for <strong>production-grade, legally defensible</strong> AI filmmaking. UltraReal can integrate <em>with</em> these platforms as the quality & governance layer — and direct video output is a planned investment milestone (*).
     </div>
   </div>
 </section>
@@ -984,7 +1094,7 @@
 <section class="slide" id="slide-9" data-label="Patents">
   <div class="slide-content">
     <div class="slide-label">Intellectual Property</div>
-    <h2>Potentially Patentable<br><span class="highlight-purple">Innovations</span></h2>
+    <h2>10+ Potentially Patentable<br><span class="highlight-purple">Innovations</span></h2>
     <p class="subtitle" style="margin-bottom:28px;">UltraReal contains multiple novel systems that appear to have no prior art in the AI video generation space.</p>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
       <div class="patent-card">
@@ -993,28 +1103,48 @@
         <span class="patent-tag tag-high">High Value</span><span class="patent-tag tag-novel">Novel</span>
       </div>
       <div class="patent-card">
-        <h4>2. Deviation Classification & Quarantine</h4>
+        <h4>2. Dual-Model Consensus AND-Gate</h4>
+        <p>A system requiring two independent AI models from different providers (OpenAI + Google) to both accept an image before it enters production — with formal dispute adjudication when they disagree, rather than either model having veto power.</p>
+        <span class="patent-tag tag-high">High Value</span><span class="patent-tag tag-novel">Novel</span>
+      </div>
+      <div class="patent-card">
+        <h4>3. Deviation Classification & Quarantine</h4>
         <p>A 5-tier system that classifies how accepted images differ from requirements, quarantines imperfect images from contaminating future shots, and requires formal promotion to adopt visual "accidents" as new canon.</p>
         <span class="patent-tag tag-high">High Value</span><span class="patent-tag tag-novel">Novel</span>
       </div>
       <div class="patent-card">
-        <h4>3. Atomic Budget Reservation Ledger</h4>
+        <h4>4. Atomic Budget Reservation Ledger</h4>
         <p>A crash-safe financial ledger that reserves costs before AI calls, enforces hard ceilings atomically, and recovers from interruptions without duplicating charges or exceeding budgets.</p>
         <span class="patent-tag tag-high">High Value</span><span class="patent-tag tag-defensive">Defensive</span>
       </div>
       <div class="patent-card">
-        <h4>4. Structural Root-Cause Repair Engine</h4>
+        <h4>5. Structural Root-Cause Repair Engine</h4>
         <p>A system that diagnoses whether an image failure stems from bad instructions (not bad luck), categorizes the fault layer, and surgically repairs only the affected components before retrying.</p>
         <span class="patent-tag tag-novel">Novel</span><span class="patent-tag tag-defensive">Defensive</span>
       </div>
       <div class="patent-card">
-        <h4>5. 7-Layer Creative Lock with Content Hashing</h4>
+        <h4>6. Regional Pixel-Composite Repair</h4>
+        <p>A method for repairing localized image defects by extracting, re-generating, and compositing only the defective region while guaranteeing surrounding pixel integrity — avoiding full-frame regeneration costs.</p>
+        <span class="patent-tag tag-novel">Novel</span><span class="patent-tag tag-high">High Value</span>
+      </div>
+      <div class="patent-card">
+        <h4>7. Clock-Face Geometric Verification</h4>
+        <p>A system that verifies AI-generated clock/watch displays using geometric angle computation with configurable uncertainty bounds, detecting if an image shows the wrong time at sub-pixel precision.</p>
+        <span class="patent-tag tag-novel">Novel</span>
+      </div>
+      <div class="patent-card">
+        <h4>8. 7-Layer Creative Lock with Content Hashing</h4>
         <p>A method for cryptographically binding creative decisions (script, visual, acting, spatial, timing, assets) to their exact content, preventing stale edits from reaching production without re-approval.</p>
         <span class="patent-tag tag-defensive">Defensive</span>
       </div>
       <div class="patent-card">
-        <h4>6. Typed Reference Pack Compilation</h4>
-        <p>A system that separates visual reference images by responsibility type (identity, wardrobe, prop, location) to prevent AI from confusing character faces with clothing or props with backgrounds.</p>
+        <h4>9. Typed Reference Pack Compilation</h4>
+        <p>A system that separates visual reference images by responsibility type (identity, wardrobe, prop, location, continuity) to prevent AI from confusing character faces with clothing or props with backgrounds.</p>
+        <span class="patent-tag tag-novel">Novel</span>
+      </div>
+      <div class="patent-card">
+        <h4>10. Capability-Aware Judge Routing</h4>
+        <p>A system that evaluates each AI judge's capability for specific verification criteria (e.g., clock reading, text detection) and routes only eligible judges to produce verdicts — preventing unqualified assessments from contaminating acceptance decisions.</p>
         <span class="patent-tag tag-novel">Novel</span>
       </div>
     </div>
@@ -1137,7 +1267,7 @@
         <h3 style="font-size:18px;">👤 Key-Person Dependency</h3>
         <p>Currently a small-team project. Loss of the primary developer could slow progress significantly.</p>
         <div class="explain-box" style="margin-top:10px;">
-          <strong>Our defense:</strong> 30+ specification documents, 56 test files, full CI/CD, and AGENTS.md onboarding guide mean the codebase is well-documented and reproducible. Investment includes hiring to distribute knowledge across a growing team.
+          <strong>Our defense:</strong> 63 specification documents, 300+ test files, full CI/CD, and AGENTS.md onboarding guide mean the codebase is well-documented and reproducible. Investment includes hiring to distribute knowledge across a growing team.
         </div>
       </div>
     </div>
@@ -1148,23 +1278,23 @@
 <section class="slide bg-gradient-mesh" id="slide-13" data-label="Traction">
   <div class="slide-content" style="text-align:center;">
     <div class="slide-label">Proof of Execution</div>
-    <h2>Built from Scratch to V2.2<br><span class="highlight">In 9 Days</span></h2>
-    <p class="subtitle" style="margin:0 auto 40px;max-width:600px;">This isn't a prototype or a demo. It's a production-grade system with 56 test files, 17 tagged releases, and quantitative release gates — built at extraordinary speed.</p>
+    <h2>From Zero to <span class="highlight">133K Lines</span><br>of Production-Grade Code</h2>
+    <p class="subtitle" style="margin:0 auto 40px;max-width:650px;">This isn't a prototype. It's a production-grade system with 300+ test files, 17 tagged releases, quantitative release gates, and active live validation against real short film productions — built at extraordinary speed.</p>
     <div class="stat-row" style="justify-content:center;">
-      <div class="stat"><div class="stat-number">339+</div><div class="stat-label">Commits</div></div>
+      <div class="stat"><div class="stat-number">500+</div><div class="stat-label">Commits</div></div>
       <div class="stat"><div class="stat-number">17</div><div class="stat-label">Tagged Releases</div></div>
-      <div class="stat"><div class="stat-number">56</div><div class="stat-label">Test Files</div></div>
-      <div class="stat"><div class="stat-number">30+</div><div class="stat-label">Spec Documents</div></div>
-      <div class="stat"><div class="stat-number">65</div><div class="stat-label">Source Modules</div></div>
+      <div class="stat"><div class="stat-number">300+</div><div class="stat-label">Test Files</div></div>
+      <div class="stat"><div class="stat-number">63</div><div class="stat-label">Spec Documents</div></div>
+      <div class="stat"><div class="stat-number">164</div><div class="stat-label">Source Modules</div></div>
     </div>
     <div class="card-grid card-grid-4" style="margin-top:40px;text-align:left;">
       <div class="card">
         <h3 style="color:var(--accent-green);">✅ Full CI/CD</h3>
-        <p>Automated testing on every commit. 3× deterministic release gate passes required.</p>
+        <p>Automated testing on every commit. macOS ARM64 self-hosted. 3× deterministic release gate passes required.</p>
       </div>
       <div class="card">
-        <h3 style="color:var(--accent-cyan);">✅ Live Tested</h3>
-        <p>Validated against real Google Vertex AI and OpenAI APIs with real cost tracking.</p>
+        <h3 style="color:var(--accent-cyan);">✅ Live Validated</h3>
+        <p>Tested against real "Blinding Lights" and "Second Hand" short film projects with real Vertex AI and OpenAI APIs.</p>
       </div>
       <div class="card">
         <h3 style="color:var(--accent-purple);">✅ Zero Veo Calls</h3>
@@ -1272,7 +1402,7 @@
     <div class="card-grid card-grid-3" style="text-align:left;max-width:1000px;margin:0 auto;">
       <div class="card" style="border:1px solid var(--accent-blue);">
         <h3>What We've Built</h3>
-        <p>A working, tested, production-grade AI preproduction system with 6+ patentable innovations. No equivalent exists on the market. Proven in live production with real API spend.</p>
+        <p>A working, tested, 133K-line production-grade AI preproduction system with 10+ patentable innovations, 164 source modules, and 300+ test files. No equivalent exists on the market. Proven in live production with real API spend.</p>
       </div>
       <div class="card" style="border:1px solid var(--accent-purple);">
         <h3>What We Need</h3>
@@ -1284,10 +1414,54 @@
       </div>
     </div>
 
+    <!-- CONTACT FORM -->
     <div style="margin-top:40px;">
-      <a href="#" class="cta-button">Let's Talk →</a>
+      <h3 style="font-family:'Space Grotesk',sans-serif;font-size:24px;margin-bottom:24px;">Get in Touch</h3>
+      <!--
+        FORMSUBMIT.CO: After the first real submission, you'll receive an
+        activation email. Once activated, FormSubmit gives you a hashed
+        endpoint URL (e.g. https://formsubmit.co/abc123def456) — replace
+        the action below with that hash to remove the email from source.
+      -->
+      <form class="contact-form" action="https://formsubmit.co/keylentona@gmail.com" method="POST">
+        <!-- FormSubmit config -->
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_subject" value="UltraReal Investor Inquiry">
+        <input type="hidden" name="_template" value="box">
+        <input type="text" name="_honey" style="display:none">
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="contact-name">Your Name</label>
+            <input type="text" id="contact-name" name="name" placeholder="Jane Smith" required>
+          </div>
+          <div class="form-group">
+            <label for="contact-email">Email</label>
+            <input type="email" id="contact-email" name="email" placeholder="jane@example.com" required>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="contact-company">Company <span style="opacity:0.5;">(optional)</span></label>
+            <input type="text" id="contact-company" name="company" placeholder="Acme Studios">
+          </div>
+          <div class="form-group">
+            <label for="contact-role">Role <span style="opacity:0.5;">(optional)</span></label>
+            <input type="text" id="contact-role" name="role" placeholder="Investor, Producer, Creator…">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="contact-message">Message</label>
+            <textarea id="contact-message" name="message" placeholder="I'd like to learn more about…" required></textarea>
+          </div>
+        </div>
+        <button type="submit">Send Message →</button>
+        <p class="form-note">Your message goes directly to the UltraReal team. We typically respond within 24 hours.</p>
+      </form>
     </div>
-    <p style="margin-top:20px;color:var(--text-muted);font-size:14px;">UltraReal V2.2.0 · Confidential Investor Materials · 2026</p>
+
+    <p style="margin-top:32px;color:var(--text-muted);font-size:14px;">UltraReal V2.2.0 + V2.3 Development · Confidential Investor Materials · September 2026</p>
   </div>
 </section>
 
