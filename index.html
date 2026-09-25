@@ -1537,6 +1537,8 @@ const observer = new IntersectionObserver((entries) => {
 slides.forEach(s => observer.observe(s));
 
 document.addEventListener('keydown', (e) => {
+  const tag = document.activeElement?.tagName;
+  if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT') return;
   const current = Array.from(document.querySelectorAll('.nav-dot')).findIndex(d => d.classList.contains('active'));
   if (e.key === 'ArrowDown' || e.key === 'ArrowRight' || e.key === ' ') {
     e.preventDefault();
